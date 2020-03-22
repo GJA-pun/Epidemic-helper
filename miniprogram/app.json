@@ -18,18 +18,18 @@
       "iconPath": "images/icon.png",
       "selectedIconPath": "images/icon.png"
     },{
-      "pagePath": "pages/index/index",
-      "text": "社区新闻",
+      "pagePath": "pages/service/service",
+      "text": "服务",
       "iconPath": "images/icon.png",
       "selectedIconPath": "images/icon.png"
     },{
-      "pagePath": "pages/index/index",
-      "text": "社区新闻",
+      "pagePath": "pages/bill/bill",
+      "text": "订单",
       "iconPath": "images/icon.png",
       "selectedIconPath": "images/icon.png"
     },{
-      "pagePath": "pages/index/index",
-      "text": "社区新闻",
+      "pagePath": "pages/mine/mine",
+      "text": "个人中心",
       "iconPath": "images/icon.png",
       "selectedIconPath": "images/icon.png"
     }]

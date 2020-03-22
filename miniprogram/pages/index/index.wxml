@@ -55,8 +55,9 @@
         <view class="title">
           <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
         </view>
-        <view class="content">
-          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4">
+        <view class="content flex justify-center">
+          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4"
+          class="max-width">
           </video>
         </view>
         <view class="text-xs padding-lr margin-tb-xs">
@@ -161,8 +162,9 @@
         <view class="title">
           <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
         </view>
-        <view class="content">
-          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4">
+        <view class="content flex justify-center">
+          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4"
+          class="max-width">
           </video>
         </view>
         <view class="text-xs padding-lr margin-tb-xs">

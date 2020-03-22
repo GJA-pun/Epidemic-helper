@@ -3,57 +3,213 @@
   <view slot="content">战疫小帮手</view>
 </cu-custom>
 
-<!--轮播图-->
-<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
-  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
-    <view class="swiper-item">
-      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
-    </view>
-  </swiper-item>
-</swiper>
+<scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+    {{tabNav[index]}}
+  </view>
+</scroll-view>
 
-<!--公告栏-->
-<view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange "></text> 公告栏
-  </view>
-</view>
-<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
-  <view class="cu-item {{menuArrow?'arrow':''}}">
-    <button class="cu-btn content">
-      <text class="cuIcon-btn text-olive"></text>
-      <text class="text-grey">Open-type 按钮</text>
-    </button>
-  </view>
-  <view class="cu-item {{menuArrow?'arrow':''}}">
-    <view class="content">
-      <text class="cuIcon-circlefill text-grey"></text>
-      <text class="text-grey">图标 + 标题</text>
-    </view>
-  </view>
-</view>
-
-<!--新闻热点-->
-<view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange "></text> 新闻热点
-  </view>
-</view>
-<view class="cu-list menu-avatar">
-  <view class="cu-item">
-    <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-    <view class="content">
-      <view class="text-grey">凯尔</view>
-      <view class="text-gray text-sm flex">
-        <text class="text-cut">
-            <text class="cuIcon-infofill text-red  margin-right-xs"></text> 我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。
-        </text>
+<!--新闻热点01-->
+<block wx:if="{{TabCur==0}}">
+  <view class="cu-list">
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">正义天使</view>
+              <view class="cu-tag bg-green light sm round">史诗</view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
-    <view class="action">
-      <view class="text-grey text-xs">22:20</view>
-      <view class="cu-tag round bg-grey sm">5</view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="text-sub padding-lr padding-tb-xs">
+          <view class="text-cut">
+          <text class="text-black text-bold">ColorUI组件库、ColorUI组件库、ColorUI组件库、ColorUI组件库</text>
+          </view>
+        </view>
+        
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+
+        <view class="content">
+          <image wx:for="{{3}}" wx:key src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        </view>
+      </view>
     </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4">
+          </video>
+        </view>
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+      </view>
+    </view>
+
   </view>
-</view>
+</block>
+
+<!--新闻热点02-->
+<block wx:if="{{TabCur==1}}">
+  <view class="cu-list">
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="text-sub padding-lr padding-tb-xs">
+          <view class="text-cut">
+          <text class="text-black text-bold">ColorUI组件库、ColorUI组件库、ColorUI组件库、ColorUI组件库</text>
+          </view>
+        </view>
+        
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+
+        <view class="content">
+          <image wx:for="{{3}}" wx:key src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">正义天使</view>
+              <view class="cu-tag bg-green light sm round">史诗</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="text-sub padding-lr padding-tb-xs">
+          <view class="text-cut">
+          <text class="text-black text-bold">ColorUI组件库、ColorUI组件库、ColorUI组件库、ColorUI组件库</text>
+          </view>
+        </view>
+        
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+
+        <view class="content">
+          <image wx:for="{{3}}" wx:key src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">正义天使</view>
+              <view class="cu-tag bg-green light sm round">史诗</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</block>
+
+<!--新闻热点03-->
+<block wx:if="{{TabCur==2}}">
+  <view class="cu-list">
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4">
+          </video>
+        </view>
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="text-sub padding-lr padding-tb-xs">
+          <view class="text-cut">
+          <text class="text-black text-bold">ColorUI组件库、ColorUI组件库、ColorUI组件库、ColorUI组件库</text>
+          </view>
+        </view>
+        
+        <view class="text-xs padding-lr margin-tb-xs">
+          <text class="text-gray margin-right">我于杀戮之中绽放 亦如黎明中的花朵</text>
+          <view class="cu-tag bg-red light sm round">正义天使</view>
+          <view class="cu-tag bg-green light sm round">史诗</view>
+        </view>
+
+        <view class="content">
+          <image wx:for="{{3}}" wx:key src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article no-card">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+        </view>
+        <view class="content">
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">正义天使</view>
+              <view class="cu-tag bg-green light sm round">史诗</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</block>

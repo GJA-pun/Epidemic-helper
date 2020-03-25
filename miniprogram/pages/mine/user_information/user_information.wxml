@@ -1,0 +1,58 @@
+<!--标题栏-->
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">个人信息</view>
+</cu-custom>
+
+<form>
+  <view class="cu-form-group margin-top">
+		<view class="title">地址选择</view>
+    <text class="cuIcon-title text-red"></text>
+		<picker mode="region" bindchange="getCity" value="{{city}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{city[0]}}，{{city[1]}}，{{city[2]}}
+			</view>
+		</picker>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">收货地址</view>
+    <text class="cuIcon-title text-red"></text>
+		<input placeholder="请输入具体地址" bindinput="getAddress" type="text" value="{{address}}"></input>
+		<text class="cuIcon-locationfill text-orange"></text>
+	</view>
+
+  <view class="cu-form-group margin-top">
+		<view class="title">姓名</view>
+    <text class="cuIcon-title text-gray"></text>
+		<input placeholder="请输入真实姓名" bindinput="getName" type="text" value="{{name}}"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">手机号码</view>
+    <text class="cuIcon-title text-red"></text>
+		<input placeholder="输入可用手机号码" bindinput="getPhoneNumber" type="number" value="{{phoneNum}}"></input>
+		<view class="cu-capsule radius">
+			<view class="cu-tag bg-blue">
+				+86
+			</view>
+			<view class="cu-tag line-blue">
+				中国大陆
+			</view>
+		</view>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">验证码</view>
+    <text class="cuIcon-title text-gray"></text>
+		<input placeholder="请先输入手机号" bindinput="getCode"></input>
+		<button class="cu-btn bg-green shadow">验证码</button>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">证据号</view>
+    <text class="cuIcon-title text-gray"></text>
+		<input placeholder="身份证号" bindinput="getIDNumber" type="idcard" value="{{idNum}}"></input>
+	</view>
+</form>
+
+<view class="padding flex flex-direction">
+  <button class="cu-btn block bg-red margin-tb-sm lg" wx:if="{{submitflag}}" bindtap="submit">提交保存</button>
+  <button class="cu-btn block bg-red margin-tb-sm lg" disabled type="" wx:if="{{!submitflag}}">提交保存</button>
+</view>

@@ -1,1 +1,32 @@
-/* miniprogram/pages/mine/mine.wxss */
+.UCenter-bg {
+  background-size: cover;
+  height: 550rpx;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.UCenter-bgimage{
+  background-size: cover;
+  height: 550rpx;
+  width: 100%;
+  position: absolute;
+}
+
+.UCenter-userImage {
+  background-color: white;
+  border-radius: 50%;
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.UCenter-bg text {
+  opacity: 0.8;
+  font-size: 15px;
+}

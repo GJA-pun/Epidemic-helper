@@ -8,6 +8,7 @@ Page({
   },
   
   onLoad: function (options) {
+    this.getNews();
   },
 
   tabSelect(e) {
@@ -21,6 +22,20 @@ Page({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
+  },
+
+  getNews(){
+    wx.request({
+      url: 'http://v.juhe.cn/toutiao/index?type=top&key=6057e8978b7629b1a0d482e46a51f11e', 
+      header: {
+        'content-type': 'application/json' 
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
   }
+
+  
  
 })

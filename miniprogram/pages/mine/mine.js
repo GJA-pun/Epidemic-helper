@@ -1,66 +1,82 @@
-// miniprogram/pages/mine/mine.js
+const app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo:null,
+    loadModal:true,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    List01: [{ //横向列表
+      icon: 'cardboardfill',
+      color: 'red',
+      badge: 120,
+      name: 'VR'
+    }, {
+      icon: 'recordfill',
+      color: 'orange',
+      badge: 1,
+      name: '录像'
+    }, {
+      icon: 'picfill',
+      color: 'yellow',
+      badge: 0,
+      name: '图像'
+    }, {
+      icon: 'noticefill',
+      color: 'olive',
+      badge: 22,
+      name: '通知'
+    }],
+    List02: [{ //纵向列表
+      icon: 'edit',
+      color: 'gray',
+      name: '个人信息'
+    }],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad:function(){
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+   
+    if (!app.globalData.openid) { //判断openid已经获取
+      app.callback = () => {
+        console.log('再次回调', app.globalData.openid);
+      };
+    }
 
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo
+              })
+              wx.hideLoading()
+            }
+          })
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindtapList01: function (e) {
+    console.log(e)
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  bindtapList02:function(e){
+    switch (e.target.dataset.index){
+      case 0:
+        wx.navigateTo({
+          url: 'user_information/user_information?name=' + this.data.userInfo.nickName,
+        })
+      break;
+    }
   }
+
 })

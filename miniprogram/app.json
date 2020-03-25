@@ -2,8 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/service/service",
-    "pages/bill/bill",
-    "pages/mine/mine"
+    "pages/service/shopping/shopping",
+    "pages/mine/mine",
+    "pages/mine/user_information/user_information",
+    
+    "pages/bill/bill"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
@@ -12,31 +16,35 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "社区新闻",
-      "iconPath": "images/icon.png",
-      "selectedIconPath": "images/icon.png"
-    },{
-      "pagePath": "pages/service/service",
-      "text": "服务",
-      "iconPath": "images/icon.png",
-      "selectedIconPath": "images/icon.png"
-    },{
-      "pagePath": "pages/bill/bill",
-      "text": "订单",
-      "iconPath": "images/icon.png",
-      "selectedIconPath": "images/icon.png"
-    },{
-      "pagePath": "pages/mine/mine",
-      "text": "个人中心",
-      "iconPath": "images/icon.png",
-      "selectedIconPath": "images/icon.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "社区新闻",
+        "iconPath": "images/icon.png",
+        "selectedIconPath": "images/icon.png"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "服务",
+        "iconPath": "images/icon.png",
+        "selectedIconPath": "images/icon.png"
+      },
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "订单",
+        "iconPath": "images/icon.png",
+        "selectedIconPath": "images/icon.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心",
+        "iconPath": "images/icon.png",
+        "selectedIconPath": "images/icon.png"
+      }
+    ]
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }

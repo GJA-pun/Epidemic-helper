@@ -10,9 +10,11 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
+        env: 'comumunityservice-8a0d10',
         traceUser: true,
       })
+      this.onGetOpenid();
+      
     }
 
     wx.getSystemInfo({
@@ -29,6 +31,7 @@ App({
     })
   },
   globalData: {
+    openid:null,
     ColorList: [{
       title: '嫣红',
       name: 'red',
@@ -105,5 +108,20 @@ App({
       color: '#ffffff'
     },
     ]
-  }
+  },
+  onGetOpenid: function () {// 调用云函数,获取用户openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        this.globalData.openid = res.result.openid
+        if (this.callback) {
+          this.callback();
+        }
+      },
+      fail: err => {
+        console.log('[云函数] [login] user openid: !ok ');
+      }
+    })
+  },
 })

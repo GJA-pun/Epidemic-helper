@@ -1,2 +1,21 @@
-<!--miniprogram/pages/service/service.wxml-->
-<text>miniprogram/pages/service/service.wxml</text>
+<!--标题栏-->
+<cu-custom bgColor="bg-gradual-red">
+  <view slot="content">战疫小帮手</view>
+</cu-custom>
+
+<view class="cu-bar solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> 服务类型
+  </view>
+</view>
+
+<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+  <view class="cu-item" wx:for="{{iconList}}" wx:key="index" >
+    <view class="cuIcon-{{item.icon}} text-{{item.color}}" bindtap="goService" data-index="{{index}}">
+      <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+        <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+      </view>
+    </view>
+    <text>{{item.name}}</text>
+  </view>
+</view>

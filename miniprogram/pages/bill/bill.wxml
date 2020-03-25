@@ -1,2 +1,18 @@
-<!--miniprogram/pages/bill/bill.wxml-->
-<text>miniprogram/pages/bill/bill.wxml</text>
+<!--标题栏-->
+<cu-custom bgColor="bg-gradual-red">
+  <view slot="content">战疫小帮手</view>
+</cu-custom>
+
+<view class="cu-bar solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> 我提交的订单
+  </view>
+</view>
+
+
+
+<view class="cu-bar solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> 我接到的订单
+  </view>
+</view>

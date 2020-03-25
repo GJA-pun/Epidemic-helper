@@ -1,2 +1,33 @@
-<!--miniprogram/pages/mine/mine.wxml-->
-<text>miniprogram/pages/mine/mine.wxml</text>
+<scroll-view scroll-y class="scrollPage">
+  <!-- 顶部 -->
+  <view class="UCenter-bg" >
+    <image class="UCenter-bgimage" src="../../images/user-bg.jpg"></image>
+    <image src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/unUserImage.png'}}" class="png UCenter-userImage" mode="widthFix"></image>
+    
+    <view class="margin-top-sm">
+      <text>{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  
+  <!-- 中间横向列表 -->
+  <view class="cu-list grid col-4 {{gridBorder?'':'no-border'}}">
+    <view class="cu-item" wx:for="{{List01}}" wx:key="index" >
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}" bindtap="bindtapList02" data-index="{{index}}">
+        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+          <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+        </view>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 下方纵向列表 -->
+  <view class="cu-list menu">
+    <view class="cu-item arrow" wx:for="{{List02}}" wx:key="index">
+      <button class="cu-btn content" bindtap="bindtapList02" data-index="{{index}}">
+        <text class="cuIcon-{{item.icon}} text-{{item.color}}"></text>
+        <text class="text-grey">{{item.name}}</text>
+      </button>
+    </view>
+  </view>
+</scroll-view>

@@ -5,56 +5,271 @@
 </cu-custom>
 
 <view class="VerticalBox">
-  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:100vh">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 150rpx)">
     <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      Tab-{{item.name}}
+      {{item.name}}
     </view>
   </scroll-view>
-  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:100vh" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain" style="height:calc(100vh - 150rpx)">
     <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
       <view class='cu-bar solid-bottom bg-white'>
         <view class='action'>
-          <text class='cuIcon-title text-green'></text> Tab-{{item.name}} </view>
-      </view>
-      <view class="cu-list menu-avatar">
-        <view class="cu-item">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-          <view class="content">
-            <view class="text-grey">凯尔</view>
-            <view class="text-gray text-sm flex">
-              <text class="text-cut">
-										<text class="cuIcon-infofill text-red  margin-right-xs"></text> 我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。
-              </text>
-            </view>
-          </view>
-          <view class="action">
-            <view class="text-grey text-xs">22:20</view>
-            <view class="cu-tag round bg-grey sm">5</view>
-          </view>
+          <text class='cuIcon-title text-green'></text> {{item.name}} 
         </view>
-        
+      </view>
+
+      <view class="cu-list grid col-3 no-border">
+        <view class="cu-item align-center" wx:for="{{4}}" wx:key>
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10002.jpg" mode="aspectFill"></image>
+          <text>商品名</text>
+        </view>
       </view>
 
     </view>
   </scroll-view>
 </view>
 
-<view class="box">
-  <view class="cu-bar bg-white tabbar border shop foot">
-    <button class="action" open-type="contact">
-      <view class="cuIcon-service text-green">
-        <view class="cu-tag badge"></view>
-      </view> 客服
-    </button>
-    <view class="action">
-      <view class="cuIcon-cart">
-        <view class="cu-tag badge">99</view>
+<view class="ShoppingCart round shadow-warp">
+  <button class="cu-btn lg icon  bg-red" bindtap="showModal" data-target="DrawerModalR">
+    <view class="cuIcon-cart text-white"></view>
+  </button>
+</view>
+
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+    
+    <view class="cu-bar bg-white">
+      <view class="action">
+        <text class="cuIcon-cart text-red "></text>购物车
       </view>
-      购物车
     </view>
-    <view class="btn-group">
-      <button class="cu-btn bg-orange round shadow-blur">加入购物车</button>
-      <button class="cu-btn bg-red round shadow-blur">立即订购</button>
+    <scroll-view scroll-y style="height:calc(100vh - 400rpx)">
+    <view class="cu-list menu-avatar padding-lr-xs padding-tb-sm bg-gray">
+      <view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+
+      <view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view><view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view><view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view><view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view><view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view><view class="cu-item ">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-pink">
+            <text class="text-cut">莫甘娜</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">凯尔，你被自己的光芒变的盲目！</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+      <view class="cu-item grayscale">
+        <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+        <view class="content">
+          <view>
+            <text class="text-cut">伊泽瑞尔</text>
+            <view class="cu-tag round bg-orange sm">断开连接...</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 等我回来一个打十个</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cu-tag round bg-red sm">5</view>
+        </view>
+      </view>
+
     </view>
+    </scroll-view>
+
+    <view class="padding-sm flex align-center justify-around">
+      <button class="cu-btn line-red lg">
+        <text class="cuIcon-delete"></text> 清除
+      </button>
+      <button class="cu-btn line-orange lg">
+        <text class="cuIcon-upload"></text> 提交
+      </button>
+    </view>
+
   </view>
 </view>

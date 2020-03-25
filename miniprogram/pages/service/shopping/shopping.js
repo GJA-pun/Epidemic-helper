@@ -18,12 +18,11 @@ Page({
     let list = [{}];
     for (let i = 0; i < 26; i++) {
       list[i] = {};
-      list[i].name = String.fromCharCode(65 + i);
+      list[i].name = "类型" + (i+1);
       list[i].id = i;
     }
     this.setData({
       list: list,
-      listCur: list[0]
     })
   },
   onReady() {
@@ -37,7 +36,6 @@ Page({
     })
   },
   VerticalMain(e) {
-    console.log(e)
     let that = this;
     let list = this.data.list;
     let tabHeight = 0;
@@ -47,8 +45,6 @@ Page({
         view.fields({
           size: true
         }, data => {
-          console.log("data")
-          console.log(data)
           list[i].top = tabHeight;
           tabHeight = tabHeight + data.height;
           list[i].bottom = tabHeight;
@@ -69,5 +65,16 @@ Page({
         return false
       }
     }
-  }
+  },
+
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
 })

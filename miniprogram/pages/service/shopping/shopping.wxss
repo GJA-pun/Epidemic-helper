@@ -1,6 +1,6 @@
 /* pages/component/nav/nav.wxss */
 .VerticalNav.nav {
-  width: 200rpx;
+  width: 220rpx;
   white-space: initial;
 }
 
@@ -36,7 +36,17 @@
   background-color: #f1f1f1;
 }
 
-.bottom-setting{
-  position:fixed;
-  bottom:0;
+.VerticalMain image{
+  padding: 2px;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.ShoppingCart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
 }

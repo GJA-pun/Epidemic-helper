@@ -124,16 +124,16 @@
           <text class="text-xs text-gray">上架时间 {{goods.goods_date}}</text>
         </view>
         <view class="flex align-center justify-between">
-          <view class="solid-bottom text-xxl padding">
+          <view class="text-xxl padding">
             <text class="text-price text-red">{{goods.goods_price}}</text>
           </view>
           <view class="flex align-center justify-between">
             <view class="action margin-right-sm" wx:if="{{goodsOpenType == 'sc'?false:true}}">
-              <button class="cu-btn sm icon bg-grey" catchtap="reduceGoodsQuantity">
+              <button class="cu-btn sm icon bg-ghostWhite" catchtap="reduceGoodsQuantity">
                 <text class="cuIcon-move"></text>
               </button>
-              <input value="{{goodsQuantity}}" disabled="true"></input>
-              <button class="cu-btn sm icon bg-grey" catchtap="addGoodsQuantity">
+              <input class="margin-sm" value="{{goodsQuantity}}" disabled="true"></input>
+              <button class="cu-btn sm icon bg-ghostWhite" catchtap="addGoodsQuantity">
                 <text class="cuIcon-add"></text>
               </button>
             </view>
@@ -161,14 +161,14 @@
 <view class="cu-modal {{showSubmitModalFlag?'show':''}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
-      <view class="content">简介</view>
+      <view class="content">订单简介</view>
       <view class="action" bindtap="closeSubmitModal">
         <text class="cuIcon-close text-red"></text>
       </view>
     </view>
     <view class="padding-xl text-left">
       <view class="cu-form-group margin-top">
-        <textarea maxlength="-1" bindinput="getBillIntroduction" placeholder="填写要求或注意事项"></textarea>
+        <textarea maxlength="-1" disabled="{{showSubmitModalFlag?false:true}}" bindinput="getBillIntroduction" placeholder=""></textarea>
       </view>
     </view>
     <view class="cu-bar bg-white justify-end">

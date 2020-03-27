@@ -14,7 +14,7 @@ App({
         traceUser: true,
       })
       this.onGetOpenid();
-      
+      this.onGetUserInfo();
     }
 
     wx.getSystemInfo({
@@ -117,8 +117,8 @@ App({
       data: {},
       success: res => {
         this.globalData.openid = res.result.openid
-        if (this.callback) {
-          this.callback();
+        if (this.callbackopenid) {
+          this.callbackopenid();
         }
       },
       fail: err => {
@@ -126,4 +126,21 @@ App({
       }
     })
   },
+  onGetUserInfo: function(){
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.globalData.userInfo = res.userInfo
+              if (this.callbackuserinfo) {
+                this.callbackuserinfo();
+              }
+            }
+          })
+        }
+      }
+    })
+  }
 })

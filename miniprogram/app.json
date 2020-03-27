@@ -1,10 +1,13 @@
 {
   "pages": [
     "pages/service/shopping/shopping",
+    "pages/mine/mine",
     "pages/index/index",
+    
+    
     "pages/service/service",
     
-    "pages/mine/mine",
+    
     "pages/mine/user_information/user_information",
     
     "pages/bill/bill"

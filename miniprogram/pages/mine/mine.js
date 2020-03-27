@@ -42,27 +42,28 @@ Page({
     })
    
     if (!app.globalData.openid) { //判断openid已经获取
-      app.callback = () => {
-        console.log('再次回调', app.globalData.openid);
+      app.callbackopenid = () => {
+        console.log('再次回调 openid', app.globalData.openid);
       };
     }
 
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-              wx.hideLoading()
-            }
-          })
-        }
-      }
-    })
+    if(!app.globalData.userInfo){
+      app.callbackuserinfo = () => {
+        console.log('再次回调 userinfo', app.globalData.userInfo);
+        that.setData({
+          userInfo: app.globalData.userInfo
+        })
+        wx.hideLoading();
+      };
+    }else{
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+      wx.hideLoading();
+    }
+
+    
+
   },
 
   bindtapList01: function (e) {
